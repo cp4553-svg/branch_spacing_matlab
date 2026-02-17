@@ -84,8 +84,9 @@ y(valid) = y_next(valid);
     x(x > Lx)  = 2*Lx - x(x > Lx);
     y(y < 0)   = -y(y < 0);
     y(y > Ly)  = 2*Ly - y(y > Ly);
-
-    in_region = (x > 7) & (x < 13) & (y > 7) & (y < 13);
+    
+    R_region = 3;
+    in_region = (x - 10).^2 + (y - 10).^2 < R_region^2;
     region_counts(t) = sum(in_region);
 
     if mod(t, add_every) == 0 && N < max_cells
@@ -127,3 +128,4 @@ y(valid) = y_next(valid);
 end
 
 % close(vidObj);
+
